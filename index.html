@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Help Center</title>
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --whatsapp-green: #25D366;
+            --whatsapp-dark-green: #128C7E;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #4a4a4a;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .whatsapp-bg {
+            background-color: var(--whatsapp-green);
+        }
+        
+        .whatsapp-text {
+            color: var(--whatsapp-dark-green);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            color: var(--whatsapp-dark-green);
+        }
+        
+        .search-wrapper {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .search-input {
+            border: none;
+            box-shadow: none !important;
+            padding-left: 20px;
+        }
+        
+        .search-button {
+            background-color: var(--whatsapp-dark-green);
+            border: none;
+            padding: 0.6rem 1.5rem;
+        }
+        
+        .modal-content {
+            border-radius: 12px;
+            border: none;
+        }
+        
+        .footer {
+            background-color: #f1f1f1;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--whatsapp-dark-green);
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark whatsapp-bg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-whatsapp me-2"></i>WhatsApp Help Center
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Search Bar -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group search-wrapper mb-5">
+                    <input type="text" class="form-control search-input" placeholder="Search for help topics...">
+                    <button class="btn btn-primary search-button" type="button">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="mb-4 text-center">Popular Help Articles</h2>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" onclick="handleArticleClick('Account and Profile')">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-person-circle me-2"></i>Account and Profile
+                        </h5>
+                        <p class="card-text">Learn how to set up your account, update your profile, and manage privacy settings.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" onclick="handleArticleClick('Messaging')">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-chat-dots me-2"></i>Messaging
+                        </h5>
+                        <p class="card-text">Tips for sending messages, creating group chats, and using advanced messaging features.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" onclick="handleArticleClick('Calls')">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-telephone me-2"></i>Voice and Video Calls
+                        </h5>
+                        <p class="card-text">How to make voice and video calls, set up group calls, and troubleshoot connection issues.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" onclick="handleArticleClick('Security')">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-shield-lock me-2"></i>Security and Privacy
+                        </h5>
+                        <p class="card-text">Protect your conversations with end-to-end encryption and secure your account.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" onclick="handleArticleClick('Media')">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-image me-2"></i>Photos and Media
+                        </h5>
+                        <p class="card-text">Share photos, videos, and documents with friends and family.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100" onclick="handleArticleClick('Troubleshooting')">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-tools me-2"></i>Troubleshooting
+                        </h5>
+                        <p class="card-text">Solutions for common problems and technical issues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-4 whatsapp-text fw-bold">About WhatsApp</h5>
+                    <p>WhatsApp Messenger is a cross-platform messaging and Voice over IP service owned by Meta Platforms.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-facebook whatsapp-text"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-twitter whatsapp-text"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-instagram whatsapp-text"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-youtube whatsapp-text"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4 whatsapp-text fw-bold">Help</h5>
+                    <div class="footer-links">
+                        <a href="#">FAQs</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">User Guides</a>
+                        <a href="#">Community</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4 whatsapp-text fw-bold">Company</h5>
+                    <div class="footer-links">
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Press</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="mb-4 whatsapp-text fw-bold">Newsletter</h5>
+                    <p>Subscribe to our newsletter for the latest updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn whatsapp-bg text-white" type="button">Subscribe</button>
+                    </div>
+                    <p class="small text-muted">By subscribing, you agree to our Privacy Policy.</p>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">© 2025 WhatsApp Inc. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-decoration-none text-muted me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-muted me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-muted">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="featureModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <i class="bi bi-hourglass-split display-1 text-warning mb-4"></i>
+                    <h2 class="mb-3">Coming Soon!</h2>
+                    <p class="mb-4">This feature is currently under development and will be available soon.</p>
+                    <p>Thank you for your patience.</p>
+                    <button type="button" class="btn btn-lg whatsapp-bg text-white mt-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS and Popper.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function handleArticleClick(articleName) {
+            // Open Facebook in a new tab
+            window.open('https://www.facebook.com/', '_blank');
+        }
+
+
+    </script>
+</body>
+</html>
